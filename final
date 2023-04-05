@@ -593,11 +593,12 @@ void travar() {
     lcd.clear();
     lcd.print("################");
     delay(4 * g);
+    servomotor.write(0);
   }
 }
 void resetar_2() {
   int o = 0;
-  while (o < 4) {
+  while (o < 3) {
     lcd.clear();
     lcd.print("entre a senha");
     entrar_senha();
@@ -634,7 +635,7 @@ void resetar_2() {
 }
 void atualizar_senha() {
   int o = 0;
-  while (o < 4) {
+  while (o < 3) {
     lcd.clear();
     lcd.print("confirme a senha");
     entrar_senha();
@@ -664,7 +665,7 @@ void atualizar_senha() {
 void verificar_senha_controle() {
   int fy;
   int hj = 0;
-  while (hj < 4) {
+  while (hj < 3) {
     entrar_senha();
     fy = verificar_senha();
     if (fy == 0) {
@@ -863,13 +864,13 @@ int deslizando() {
 }
 void controle_deslizante() {
   lcd.clear();
-  lcd.print("após 5 segundos");
+  lcd.print("apos 5 segundos");
   delay(2 * g);
   lcd.clear();
   lcd.print("de inatividade");
   delay(2 * g);
   lcd.clear();
-  lcd.print("voltarás à tela");
+  lcd.print("voltaras a tela");
   delay(2 * g);
   lcd.clear();
   lcd.print("anterior");
@@ -880,10 +881,10 @@ void controle_deslizante() {
 }
 void tela_controle() {
   lcd.clear();
-  lcd.print("0 p/ esquerda");
+  lcd.print("0 p anti horario");
   delay(2 * g);
   lcd.clear();
-  lcd.print("1 p/ direita");
+  lcd.print("1 p/ horario");
   delay(2 * g);
   lcd.clear();
   controle_deslizante();
@@ -898,8 +899,8 @@ void tela_selecao2() {
   lcd.print("  ");
   k = ler_b();
   delay(g);
-  if ((k == 0) {
-  if (!flag2)) {
+  if (k == 0) {
+    if (!flag2) {
       lcd.clear();
       lcd.print("confirme a senha");
       delay(g);
@@ -907,12 +908,12 @@ void tela_selecao2() {
       tela_controle();
     } else
       lcd.clear();
-      lcd.print("cadastre uma senha");
-      delay(g);
-      tela_selecao2();
-    } else
+    lcd.print("cadastre uma senha");
+    delay(g);
+    tela_selecao2();
+  } else
     tela_selecao1();
-  }
+}
 void tela_selecao1() {
   k = 2;
   lcd.clear();
@@ -926,10 +927,10 @@ void tela_selecao1() {
     if (flag2) {
       lcd.clear();
       lcd.print("1-voltar 2-criar");
-      delay(g);
+      delay(2*g);
       lcd.clear();
       lcd.print("3-resetar");
-      delay(g);
+      delay(2*g);
       tela_seguranca();
     } else tela_seguranca3();
   }
