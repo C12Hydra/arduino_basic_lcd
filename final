@@ -589,11 +589,12 @@ int verificar_senha() {
     } else return (0);
 }
 void travar() {
+servomotor.write(0);
   while (true) {
     lcd.clear();
     lcd.print("################");
     delay(4 * g);
-    servomotor.write(0);
+    
   }
 }
 void resetar_2() {
